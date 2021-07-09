@@ -8,10 +8,5 @@ function search(email, phrase) {
 }
 
 export function findRanges(element, patternsToFind) {
-  const newWarnings = [];
-  for (let i = 0; i < patternsToFind.length; i++) {
-    const warnings = search(element, patternsToFind[i]);
-    newWarnings.push(...warnings);
-  }
-  return newWarnings;
+  return patternsToFind.flatMap((pattern) => search(element, pattern));
 }
